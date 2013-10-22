@@ -182,7 +182,11 @@ function clean_sort($text) {
 		unset($parts[0]);
 	}
 	$text = implode('_', $parts);
-
+	//Support windows
+	if (DIRECTORY_SEPARATOR == "\\") {
+		$text = iconv('gbk', 'utf-8', $text);
+	}
+	
 	return $text;
 }
 
